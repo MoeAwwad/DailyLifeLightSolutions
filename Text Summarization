@@ -1,0 +1,29 @@
+#### Text summarization tool in Python can be a valuable solution for business users who need to extract key information from lengthy documents or articles ###
+
+
+import doc
+from gensim.summarization import summarize
+
+# Function to extract text from a Word (.docx) file
+def extract_text_from_docx(docx_path):
+    doc = docx.Document(docx_path)
+    text = ''
+    for paragraph in doc.paragraphs:
+        text += paragraph.text + '\n'
+    return text
+
+# Specify the path to your Word file
+docx_file_path = 'path_to_your_document.docx'
+
+# Extract text from the Word file
+document_text = extract_text_from_docx(docx_file_path)
+
+# Set the ratio of the original text to keep in the summary
+summary_ratio = 0.2  # You can adjust this ratio as needed
+
+# Generate the summary
+summary = summarize(document_text, ratio=summary_ratio)
+
+# Print the summary
+print(summary)
+
